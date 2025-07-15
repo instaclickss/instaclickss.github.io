@@ -1,0 +1,249 @@
+body {
+    margin: 0px;
+    overflow-x: hidden;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.navBar {
+    position: fixed;
+    z-index: 3;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #4c5270;
+}
+
+.logoCont {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    width: 70px;
+    margin-left: 30px;
+}
+
+.navBarLinks {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.navBarLinks > li {
+    float: left;
+}
+
+.navBarLinks > li:not(:last-child) {
+    margin-right: 30px;
+}
+
+.navBarLinks > li > a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.navBarLinks > li > a > p {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.navBarLinks > li > a:hover {
+    text-decoration: underline;
+    text-underline-offset: 6px;
+}
+
+.navBarLinks > li > a.active {
+    text-decoration: underline;
+    text-underline-offset: 6px;
+}
+
+.menuButton {
+    width: 35px;
+    cursor: pointer;
+    margin-right: 30px;
+}
+
+.menu {
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    top: 0px;
+    left: -301px;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    background-color: #4c5270;
+    z-index: 999;
+}
+
+.menuClose {
+    position: relative;
+    top: 30px;
+    left: 235px;
+    width: 35px;
+    cursor: pointer;
+}
+
+.menuCover {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 998;
+}
+
+@keyframes menuOpen {
+    from {left: -301px;}
+    to {left: 0px;}
+}
+
+@keyframes menuClose {
+    from {left: 0px;}
+    to {left: -301px;}
+}
+
+.menuLinks {
+    position: relative;
+    top: 30px;
+    list-style-type: none;
+    color: #ffffff;
+}
+
+.menuLinks > li:not(:last-child) {
+    margin-bottom: 30px;
+}
+
+.menuLinks > li > a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.menuLinks > li > a:hover {
+    text-decoration: underline;
+    text-underline-offset: 6px;
+}
+
+.menuLinks > li > a.active {
+    text-decoration: underline;
+    text-underline-offset: 6px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 80px;
+    flex: 1;
+}
+
+.footer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #4c5270;
+}
+
+.footerCopyright {
+    margin: 0px;
+    margin-bottom: 30px;
+    color: #ffffff;
+}
+
+.footerLinks {
+    list-style-type: none;
+    margin: 0px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 0px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center
+}
+
+.footerLinks > li > a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 20px;
+    white-space: nowrap;
+}
+
+.footerLinks > li > a > p {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.footerLinks > li > a:hover {
+    text-decoration: underline;
+    text-underline-offset: 6px;
+}
+
+.footerLinks > li > a.active {
+    text-decoration: underline;
+    text-underline-offset: 6px;
+}
+
+@media (max-width: 760px) {
+
+    .navBar {
+        justify-content: unset;
+        flex-direction: row-reverse;
+    }
+
+    .navBarLinks {
+        display: none;
+    }
+
+    .menuButton {
+        display: unset;
+    }
+
+}
+
+@media (min-width: 760px) {
+
+    .navBar {
+        justify-content: center;
+    }
+
+    .navBarLinks {
+        display: unset;
+    }
+
+    .menuButton {
+        display: none;
+    }
+
+}
+
+.title {
+    font-size: clamp(22px, 3vw, 30px);
+    text-align: center;
+    margin: 0px;
+}
+
+.text {
+    width: 70vw;
+    max-width: 600px;
+    margin: 0px;
+}

@@ -1,0 +1,73 @@
+.promoPicWrapper {
+    max-height: calc(100vh - 80px);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.promoPicWrapper > .promoPic {
+    width: 100%;
+    filter: brightness(50%);
+}
+
+.promoPicWrapper > .promoText {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+}
+
+.promoPicWrapper > .promoText h1 {
+    color: #ffffff;
+    font-size: clamp(22px, 5vw, 50px);
+}
+
+.getStarted {
+    background-color: #ffffff;
+    color: #000000;
+    font-size: clamp(15px, 2vw, 25px);
+    cursor: pointer;
+    border: none;
+    border-radius: 20px;
+    padding: 8px;
+    padding-right: 15px;
+    padding-left: 15px;
+    align-self: center;
+}
+
+.competitorCont {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #f0f0f0;
+    width: 100%;
+}
+
+.competitorTitle {
+    margin: 10px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.competitorList {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0px;
+    margin-bottom: 30px;
+    gap: 20px;
+}
+
+.competitorList > img {
+    width: 150px;
+}
+
+@media (max-width: 860px) {
+
+    .getStarted {
+        display: none;
+    }
+
+}

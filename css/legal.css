@@ -1,0 +1,15 @@
+.legalText {
+    width: 70vw;
+    max-width: 650px;
+    margin: 0px;
+    margin-bottom: 30px;
+}
+
+.legalText ul {
+    margin: 0px;
+    padding-left: 20px;
+}
+
+.legalText p, .legalText b {
+    margin: 0px;
+}
