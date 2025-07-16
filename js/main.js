@@ -19,8 +19,8 @@ html.menu = `
     <div class="navBar">
         <ul class="navBarLinks">
             <li><a href="/"><p>Home</p></a></li>
-            <li><a href="/#/about"><p>About</p></a></li>
-            <li><a href="/#/contact"><p>Contact</p></a></li>
+            <li><a href="/about"><p>About</p></a></li>
+            <li><a href="/contact"><p>Contact</p></a></li>
         </ul>
         <img class="menuButton" src="assets/menu.png">
         <div class="logoCont">
@@ -32,10 +32,10 @@ html.menu = `
         <img class="menuClose" src="assets/back.png">
         <ul class="menuLinks">
             <li><a href="/"><p>Home</p></a></li>
-            <li><a href="/#/about"><p>About</p></a></li>
-            <li><a href="/#/contact"><p>Contact</p></a></li>
-            <li><a href="/#/privacy-policy"><p>Privacy Policy</p></a></li>
-            <li><a href="/#/terms-of-use"><p>Terms of Use</p></a></li>
+            <li><a href="/about"><p>About</p></a></li>
+            <li><a href="/contact"><p>Contact</p></a></li>
+            <li><a href="/privacy-policy"><p>Privacy Policy</p></a></li>
+            <li><a href="/terms-of-use"><p>Terms of Use</p></a></li>
         </ul>
     </div>
     <div class="content">
@@ -44,10 +44,10 @@ html.menu = `
     <div class="footer">
         <ul class="footerLinks">
             <li><a href="/"><p>Home</p></a></li>
-            <li><a href="/#/about"><p>About</p></a></li>
-            <li><a href="/#/contact"><p>Contact</p></a></li>
-            <li><a href="/#/privacy-policy"><p>Privacy Policy</p></a></li>
-            <li><a href="/#/terms-of-use"><p>Terms of Use</p></a></li>
+            <li><a href="/about"><p>About</p></a></li>
+            <li><a href="/contact"><p>Contact</p></a></li>
+            <li><a href="/privacy-policy"><p>Privacy Policy</p></a></li>
+            <li><a href="/terms-of-use"><p>Terms of Use</p></a></li>
         </ul>
         <small class="footerCopyright">© InstaClicks 2024</small>
     </div>
@@ -261,19 +261,19 @@ var pages = {
             ]
         };
     },
-    "/#/about": function() {
+    "/about": function() {
         loadPage(html.about, html.menu);
         document.title += " - About us";
     },
-    "/#/contact": function() {
+    "/contact": function() {
         loadPage(html.contact, html.menu);
         document.title += " - Contact us";
     },
-    "/#/privacy-policy": function() {
+    "/privacy-policy": function() {
         loadPage(html.privacyPolicy, html.menu);
         document.title += " - Privacy Policy";
     },
-    "/#/terms-of-use": function() {
+    "/terms-of-use": function() {
         loadPage(html.termsOfUse, html.menu);
         document.title += " - Terms Of Use";
     }
