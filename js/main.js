@@ -261,19 +261,19 @@ var pages = {
             ]
         };
     },
-    "/about": function() {
+    "/about/": function() {
         loadPage(html.about, html.menu);
         document.title += " - About us";
     },
-    "/contact": function() {
+    "/contact/": function() {
         loadPage(html.contact, html.menu);
         document.title += " - Contact us";
     },
-    "/privacy-policy": function() {
+    "/privacy-policy/": function() {
         loadPage(html.privacyPolicy, html.menu);
         document.title += " - Privacy Policy";
     },
-    "/terms-of-use": function() {
+    "/terms-of-use/": function() {
         loadPage(html.termsOfUse, html.menu);
         document.title += " - Terms Of Use";
     }
