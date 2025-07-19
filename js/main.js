@@ -251,13 +251,13 @@ var pages = {
         loadPage(html.home, html.menu);
         window.resources = {
             products: [
-                {"url": "https://buy.stripe.com/cN28zmcCg1iydgs2fP", "amountTitle": "1000", "unitTitle": "followers", "priceTitle": "$2.54", "delivery": "48 minutes", default: true},
-                {"url": "https://buy.stripe.com/4gwaHu45K9P42BO5s2", "amountTitle": "2500", "unitTitle": "followers", "priceTitle": "$5.74", "delivery": "2 hours"},
-                {"url": "https://buy.stripe.com/bIY4j60Ty6CS2BO07J", "amountTitle": "5000", "unitTitle": "followers", "priceTitle": "$10.05", "delivery": "4 hours"},
-                {"url": "https://buy.stripe.com/6oE7vigSw3qG0tG4o0", "amountTitle": "10K", "unitTitle": "followers", "priceTitle": "$19.73", "delivery": "8 hours"},
-                {"url": "https://buy.stripe.com/8wM9Dq45KgdsfoA2fT", "amountTitle": "25K", "unitTitle": "followers", "priceTitle": "$48.77", "delivery": "20 hours"},
-                {"url": "https://buy.stripe.com/4gweXKeKof9o0tG07M", "amountTitle": "50K", "unitTitle": "followers", "priceTitle": "$97.17", "delivery": "1 day 16 hours"},
-                {"url": "https://buy.stripe.com/28o9DqgSw5yOfoAcUz", "amountTitle": "100K", "unitTitle": "followers", "priceTitle": "$193.97", "delivery": "3 days 8 hours"}
+                {"url": "https://buy.stripe.com/fZueVd5ZQ0jB4B7b1H2Fb3G", "amountTitle": "1000", "unitTitle": "followers", "priceTitle": "$5.00", "delivery": "48 minutes", "default": true},
+                {"url": "https://buy.stripe.com/6oU00j2NE1nF0kRfhX2Fb3H", "amountTitle": "2500", "unitTitle": "followers", "priceTitle": "$11.30", "delivery": "2 hours"},
+                {"url": "https://buy.stripe.com/fZu7sL5ZQ7M36Jfc5L2Fb3I", "amountTitle": "5000", "unitTitle": "followers", "priceTitle": "$19.79", "delivery": "4 hours"},
+                {"url": "https://buy.stripe.com/fZu5kD2NEear2sZ3zf2Fb3J", "amountTitle": "10K", "unitTitle": "followers", "priceTitle": "$38.83", "delivery": "8 hours"},
+                {"url": "https://buy.stripe.com/8x2eVd2NE6HZaZvc5L2Fb3K", "amountTitle": "25K", "unitTitle": "followers", "priceTitle": "$95.96", "delivery": "20 hours"},
+                {"url": "https://buy.stripe.com/bJe8wPcoe3vN2sZ1r72Fb3L", "amountTitle": "50K", "unitTitle": "followers", "priceTitle": "$191.31", "delivery": "1 day 16 hours"},
+                {"url": "https://buy.stripe.com/6oUfZh0Fw0jBaZv8Tz2Fb3M", "amountTitle": "100K", "unitTitle": "followers", "priceTitle": "$381.59", "delivery": "3 days 8 hours"}
             ]
         };
     },
