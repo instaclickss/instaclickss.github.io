@@ -1,4 +1,4 @@
-var trackingServer = "https://8b6db43b912f.ngrok-free.app";
+var trackingServer = "https://e17f57e0edc1.ngrok-free.app";
 
 function setCookie(name, value) {
     document.cookie = `${name}=${value}`;
