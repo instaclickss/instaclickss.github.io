@@ -1,3 +1,84 @@
+var trackingServer = "https://81f92435a92e.ngrok-free.app";
+
+function setCookie(name, value) {
+    document.cookie = `${name}=${value}`;
+}
+
+function getCookie(name) {
+    var cookies = document.cookie.split(";");
+    for (var cookieI = 0; cookieI < cookies.length; cookieI++) {
+        var cookie = cookies[cookieI].replace(" ", "").replace(";", "").split("=");
+        if (cookie[0] == name) {
+            return cookie[1];
+        }
+    }
+}
+
+async function getUser() {
+
+    var userCookie = getCookie("user");
+
+    if (userCookie) {
+        user = JSON.parse(decodeURIComponent(userCookie));
+        return user;
+    }
+
+    var user = {};
+
+    user.navigatorObj = {};
+    var navigatorKeys = [
+        ...Object.keys(navigator), 
+        ...Object.getOwnPropertyNames(Object.getPrototypeOf(navigator))
+    ];
+    navigatorKeys.forEach(key => {
+        try {
+            var value = navigator[key];
+            if (typeof value !== "function") {
+                user.navigatorObj[key] = value;
+            }
+        } catch {
+            return;
+        }
+    });
+
+    var ipRes = await fetch("https://api.ipify.org/?format=json");
+    var ipData = await ipRes.json();
+    user.ip = ipData.ip;
+
+    user.resolution = {
+        page: {
+            width: window.innerWidth,
+            height: window.innerHeight
+        },
+        screen: {
+            width: window.screen.width,
+            height: window.screen.height
+        }
+    };
+
+    return user;
+    
+}
+
+async function sendAnalytics(activity) {
+
+    var user = await getUser();
+
+    await fetch(`${trackingServer}/sendAnalytics`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            user: user,
+            activity: activity
+        })
+    });
+
+}
+
+sendAnalytics("viewed the website");
+
 var html = {};
 
 html.menu = `
