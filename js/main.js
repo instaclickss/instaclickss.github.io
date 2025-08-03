@@ -77,8 +77,6 @@ async function sendAnalytics(activity) {
 
 }
 
-sendAnalytics("viewed the website");
-
 var html = {};
 
 html.menu = `
@@ -379,6 +377,4 @@ if (pages.hasOwnProperty(path)) {
     notFound();
 }
 
-window.addEventListener("hashchange", function() {
-    location.reload(); 
-});
+sendAnalytics("opened " + location.href)
