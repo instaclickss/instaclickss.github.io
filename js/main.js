@@ -1,82 +1,3 @@
-var trackingServer = "https://e17f57e0edc1.ngrok-free.app";
-
-function setCookie(name, value) {
-    document.cookie = `${name}=${value}`;
-}
-
-function getCookie(name) {
-    var cookies = document.cookie.split(";");
-    for (var cookieI = 0; cookieI < cookies.length; cookieI++) {
-        var cookie = cookies[cookieI].replace(" ", "").replace(";", "").split("=");
-        if (cookie[0] == name) {
-            return cookie[1];
-        }
-    }
-}
-
-async function getUser() {
-
-    var userCookie = getCookie("user");
-
-    if (userCookie) {
-        user = JSON.parse(decodeURIComponent(userCookie));
-        return user;
-    }
-
-    var user = {};
-
-    user.navigatorObj = {};
-    var navigatorKeys = [
-        ...Object.keys(navigator), 
-        ...Object.getOwnPropertyNames(Object.getPrototypeOf(navigator))
-    ];
-    navigatorKeys.forEach(key => {
-        try {
-            var value = navigator[key];
-            if (typeof value !== "function") {
-                user.navigatorObj[key] = value;
-            }
-        } catch {
-            return;
-        }
-    });
-
-    var ipRes = await fetch("https://api.ipify.org/?format=json");
-    var ipData = await ipRes.json();
-    user.ip = ipData.ip;
-
-    user.resolution = {
-        page: {
-            width: window.innerWidth,
-            height: window.innerHeight
-        },
-        screen: {
-            width: window.screen.width,
-            height: window.screen.height
-        }
-    };
-
-    return user;
-    
-}
-
-async function sendAnalytics(activity) {
-
-    var user = await getUser();
-
-    await fetch(`${trackingServer}/sendAnalytics`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            user: user,
-            activity: activity
-        })
-    });
-
-}
-
 var html = {};
 
 html.menu = `
@@ -100,6 +21,7 @@ html.menu = `
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/rrweb@latest/dist/rrweb.min.js"></script>
     <script defer src="js/menu.js"></script>
     <title>InstaClicks</title>
 </head>
@@ -376,5 +298,3 @@ if (pages.hasOwnProperty(path)) {
 } else {
     notFound();
 }
-
-sendAnalytics("opened " + location.href)
