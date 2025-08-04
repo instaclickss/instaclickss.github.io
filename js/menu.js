@@ -92,9 +92,3 @@ async function getUser() {
     return user;
     
 }
-
-/*rrweb.record({
-    emit(event) {
-        events.push(event);
-    }
-});*/
