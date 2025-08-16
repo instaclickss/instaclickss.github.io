@@ -5,8 +5,7 @@ var menuCover = document.querySelector(".menuCover");
 var navBarLinks = document.querySelectorAll(".navBarLinks > li > a");
 var menuLinks = document.querySelectorAll(".menuLinks > li > a");
 var footerLinks = document.querySelectorAll(".footerLinks > li > a");
-var trackingServer = "https://e17f57e0edc1.ngrok-free.app";
-var events = [];
+var trackingServer = "https://jointly-secure-weevil.ngrok-free.app";
 
 for (var navBarLinkI = 0; navBarLinkI < navBarLinks.length; navBarLinkI++) {
     var navBarLink = navBarLinks[navBarLinkI];
@@ -92,3 +91,22 @@ async function getUser() {
     return user;
     
 }
+
+async function sendAnalytics(activity) {
+
+    var user = await getUser();
+
+    await fetch(`${trackingServer}/sendAnalytics`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            user: user,
+            activity: activity
+        })
+    });
+
+}
+
+sendAnalytics("opened " + location.href);
