@@ -73,6 +73,10 @@
     width: 100%;
 }
 
+.proof img {
+    width: 50%;
+}
+
 @media (max-width: 860px) {
 
     .getStarted {
