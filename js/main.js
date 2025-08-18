@@ -90,9 +90,6 @@ html.home = `
         <img src="assets/competitors/twicsy.png"></img>
     </div>
 </div>
-<div class="proof">
-    <img src="assets/proof.jpg"></img>
-</div>
 <script src="js/home.js"></script>
 `;
 

@@ -64,19 +64,6 @@
     width: 150px;
 }
 
-.proof {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    background-color: #ffffff;
-    width: 100%;
-}
-
-.proof img {
-    width: 50%;
-}
-
 @media (max-width: 860px) {
 
     .getStarted {
