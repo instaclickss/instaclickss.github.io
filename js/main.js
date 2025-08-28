@@ -422,9 +422,14 @@ function loadPage(page, menu) {
     
     if (menu) {
         document.write(menu);
-        var content = document.querySelector(".content");
-        content.innerHTML = page;
-        runScripts(content);
+        var checkContent = setInterval(() => {
+            var content = document.querySelector(".content");
+            if (content) {
+                clearInterval(checkContent);
+                content.innerHTML = page;
+                runScripts(content);
+            }
+        }, 0);
     } else {
         document.write(page);
     }
