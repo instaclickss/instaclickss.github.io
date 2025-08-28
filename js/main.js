@@ -422,10 +422,12 @@ function loadPage(page, menu) {
     
     if (menu) {
         document.write(menu);
-        var content = document.querySelector(".content");
-        console.log(content);
-        content.innerHTML = page;
-        runScripts(content);
+        document.addEventListener("load", () => {
+            var content = document.querySelector(".content");
+            console.log(content);
+            content.innerHTML = page;
+            runScripts(content);
+        });
     } else {
         document.write(page);
     }
