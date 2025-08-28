@@ -421,12 +421,12 @@ function loadPage(page, menu) {
     }
     
     if (menu) {
-        document.documentElement.innerHTML = menu;
+        document.write(menu);
         var content = document.querySelector(".content");
         content.innerHTML = page;
         runScripts(content);
     } else {
-        document.documentElement.innerHTML = page;
+        document.write(page);
     }
 }
 
