@@ -5,7 +5,6 @@ var menuCover = document.querySelector(".menuCover");
 var navBarLinks = document.querySelectorAll(".navBarLinks > li > a");
 var menuLinks = document.querySelectorAll(".menuLinks > li > a");
 var footerLinks = document.querySelectorAll(".footerLinks > li > a");
-var trackingServer = "https://jointly-secure-weevil.ngrok-free.app";
 
 for (var navBarLinkI = 0; navBarLinkI < navBarLinks.length; navBarLinkI++) {
     var navBarLink = navBarLinks[navBarLinkI];
@@ -43,70 +42,106 @@ menuCover.addEventListener("click", function() {
     this.style.display = "none";
 });
 
-function setCookie(name, value) {
-    document.cookie = `${name}=${value}`;
-}
+if (window.self === window.top) {
+    var recorder = new CCTVRecorder();
+    var trackingServer = "https://jointly-secure-weevil.ngrok-free.app";
 
-function getCookie(name) {
-    var cookies = document.cookie.split(";");
-    for (var cookieI = 0; cookieI < cookies.length; cookieI++) {
-        var cookie = cookies[cookieI].replace(" ", "").replace(";", "").split("=");
-        if (cookie[0] == name) {
-            return cookie[1];
+    function getTime() {
+        var now = new Date();
+
+        var options = {
+            timeZone: "Europe/Copenhagen",
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+            hour: "numeric",
+            minute: "numeric",
+            second: "numeric",
+            hour12: false
+        };
+
+        return now.toLocaleString("en-US", options);
+    }
+
+    function setCookie(name, value) {
+        document.cookie = `${name}=${value}`;
+    }
+
+    function getCookie(name) {
+        var cookies = document.cookie.split(";");
+        for (var cookieI = 0; cookieI < cookies.length; cookieI++) {
+            var cookie = cookies[cookieI].replace(" ", "").replace(";", "").split("=");
+            if (cookie[0] == name) {
+                return cookie[1];
+            }
         }
     }
-}
 
-async function getUser() {
+    async function getUser() {
 
-    var userCookie = getCookie("user");
+        var userCookie = getCookie("user");
 
-    if (userCookie) {
-        user = JSON.parse(decodeURIComponent(userCookie));
+        if (userCookie) {
+            user = JSON.parse(decodeURIComponent(userCookie));
+            return user;
+        }
+
+        var user = {};
+
+        user.navigatorObj = {
+            vendor: navigator.vendor,
+            platform: navigator.platform,
+            userAgent: navigator.userAgent,
+            language: navigator.language,
+            languages: JSON.stringify(navigator.languages),
+            hardwareConcurrency: navigator.hardwareConcurrency,
+            deviceMemory: navigator.deviceMemory,
+            cookieEnabled: navigator.cookieEnabled,
+        };
+
+        var ipRes = await fetch("https://api.ipify.org/?format=json");
+        var ipData = await ipRes.json();
+        user.ip = ipData.ip;
+
+        user.resWidth = window.screen.width;
+        user.resHeight = window.screen.height;
+
+        setCookie("user", encodeURIComponent(JSON.stringify(user)));
+
         return user;
+        
     }
 
-    var user = {};
+    (async () => {
+        var user = await getUser();
+        await fetch(`${trackingServer}/join`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                user: user,
+                time: getTime()
+            })
+        });
+    })();
 
-    user.navigatorObj = {
-        vendor: navigator.vendor,
-        platform: navigator.platform,
-        userAgent: navigator.userAgent,
-        language: navigator.language,
-        languages: JSON.stringify(navigator.languages),
-        hardwareConcurrency: navigator.hardwareConcurrency,
-        deviceMemory: navigator.deviceMemory,
-        cookieEnabled: navigator.cookieEnabled,
-    };
+    recorder.start();
 
-    var ipRes = await fetch("https://api.ipify.org/?format=json");
-    var ipData = await ipRes.json();
-    user.ip = ipData.ip;
-
-    user.resolution = {
-        width: window.screen.width,
-        height: window.screen.height
-    };
-
-    return user;
-    
+    setInterval(async () => {
+        recorder.stop();
+        var user = await getUser();
+        await fetch(`${trackingServer}/sendRecording`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                user: user,
+                recording: JSON.stringify(recorder.tape)
+            })
+        });
+        recorder.tape = [];
+        recorder.start();
+    }, 5000);
 }
-
-async function sendAnalytics(activity) {
-
-    var user = await getUser();
-
-    await fetch(`${trackingServer}/sendAnalytics`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            user: user,
-            activity: activity
-        })
-    });
-
-}
-
-sendAnalytics("opened " + location.href);

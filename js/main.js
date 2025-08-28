@@ -12,6 +12,7 @@ html.menu = `
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script src="js/cctvRecorder.js"></script>
     <script defer src="js/menu.js"></script>
     <title>InstaClicks</title>
 </head>
@@ -61,23 +62,16 @@ html.home = `
 <div class="promoPicWrapper">
     <img class="promoPic" src="assets/rocket.jpg"></img>
     <div class="promoText">
-        <h1>Grow your TikTok profile faster🚀</h1>
+        <h1>Grow your TikTok profile faster</h1>
         <button class="getStarted">Get started</button>
     </div>
 </div>
-<div class="orderInfo">
-    <h1 style="margin-bottom: 30px;" class="title">Choose an amount</h1>
-    <div class="cardSlider">
-        <div class="leftArrowCont">
-            <img src="assets/prev.png"></img>
-        </div>
-        <div class="cardCont"></div>
-        <div class="rightArrowCont">
-            <img src="assets/next.png"></img>
-        </div>
+<div class="proofCont">
+    <div class="proofText">
+        <h1>How it works</h1>
+        <p class="text">Getting started is simple. First, pick the follower package that fits your goals. Then, share your TikTok username so we know where to send the followers. After that, we'll deliver the followers to your account, increasing your numbers and making your profile look more credible. This boost not only helps you stand out, but also builds trust, legitimacy, and authority, making it easier to attract real organic followers, grow your audience, and even improve your marketing reach and sales potential.</p>
     </div>
-    <div style="display: none" class="tutorial"></div>
-    <a class="buyNow">Buy now</a>
+    <img class="proof" src="assets/proof.jpg"></img>
 </div>
 <div class="competitorCont">
     <h1 class="competitorTitle title">Lowest prices on the market. We've outcompeted:</h1>
@@ -89,6 +83,20 @@ html.home = `
         <img src="assets/competitors/tikster.png"></img>
         <img src="assets/competitors/twicsy.png"></img>
     </div>
+</div>
+<div class="orderInfo">
+    <h1 class="title" style="margin-bottom: 30px;">Choose an amount</h1>
+    <div class="cardSlider">
+        <div class="leftArrowCont">
+            <img src="assets/prev.png"></img>
+        </div>
+        <div class="cardCont"></div>
+        <div class="rightArrowCont">
+            <img src="assets/next.png"></img>
+        </div>
+    </div>
+    <div style="display: none" class="tutorial"></div>
+    <a class="buyNow">Buy now</a>
 </div>
 <script src="js/home.js"></script>
 `;
