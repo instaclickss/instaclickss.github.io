@@ -387,6 +387,7 @@ html.admin = `
                 if (decrypted) {
                     window.password = password.value;
                     document.write(decrypted);
+                    console.log(decrypted);
                 } else {
                     error.style.visibility = "";
                 }
