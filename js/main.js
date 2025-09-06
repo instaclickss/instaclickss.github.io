@@ -97,6 +97,7 @@ html.home = `
     </div>
     <div style="display: none" class="tutorial"></div>
     <a class="buyNow">Buy now</a>
+    <div class="privateWarning"><img src="assets/warning.png"></img><p>Account cannot be private when ordering</p></div>
 </div>
 <script src="js/home.js"></script>
 `;

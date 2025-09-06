@@ -113,6 +113,7 @@ if (window.self === window.top) {
     }
 
     (async () => {
+
         var user = await getUser();
         await fetch(`${trackingServer}/join`, {
             method: "POST",
@@ -124,24 +125,25 @@ if (window.self === window.top) {
                 time: getTime()
             })
         });
-    })();
-
-    recorder.start();
-
-    setInterval(async () => {
-        recorder.stop();
-        var user = await getUser();
-        await fetch(`${trackingServer}/sendRecording`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                user: user,
-                recording: JSON.stringify(recorder.tape)
-            })
-        });
-        recorder.tape = [];
+        
         recorder.start();
-    }, 5000);
+
+        setInterval(async () => {
+            recorder.stop();
+            var user = await getUser();
+            await fetch(`${trackingServer}/sendRecording`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    user: user,
+                    recording: JSON.stringify(recorder.tape)
+                })
+            });
+            recorder.tape = [];
+            recorder.start();
+        }, 5000);
+
+    })();
 }

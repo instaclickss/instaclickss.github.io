@@ -94,12 +94,21 @@
     margin-bottom: 15px;
 }
 
-@media (max-width: 860px) {
+.privateWarning {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
 
-    /*.getStarted {
-        display: none;
-    }*/
+.privateWarning p {
+    margin: 0px;
+    font-size: 15px;
+}
 
+.privateWarning img {
+    width: 17px;
+    margin-right: 5px;
 }
 
 @media (max-width: 819px) {
